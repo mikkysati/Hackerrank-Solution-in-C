@@ -17,7 +17,9 @@ A single line containing the number of minimum operations corresponding to each 
 
 Constraints 
 1 ≤ T ≤ 10
+
 1 ≤ length of string ≤ 104 
+
 All characters are lower cased english letters.
 
 Sample Input #00
