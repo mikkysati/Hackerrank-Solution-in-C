@@ -1,0 +1,42 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.26/angular.min.js"></script>
+</head>
+<body ng-app="">
+
+<div ng-controller="buttonController">
+<button type = "button" ng-model="button" ng-click="addf()"> 
+<div ng-show=first>{{firstNote}}</div><div ng-hide=first>{{otherNote}}</div></button> </br>
+<input type = "text" ng-model="text" ng-show="add" placeholder="Add your notes here"> <button type="button" ng-model="addtodobutton" ng-show="add" ng-disabled="!text" ng-click="addtodo()">ADD</button></br>
+
+<ul>
+<input type="text" ng-model="search" placeholder="search your notes"></br>
+<li ng-repeat="todo in todolist | filter:search"  )>
+{{todo}}<input type = "checkbox" ng-model="check"ng-change="delete($index)">
+</ul>
+</div>
+
+<script>
+function buttonController($scope){
+$scope.first = "true"
+$scope.firstNote = "Add your first todo";
+$scope.otherNote = "Add other todo";
+$scope.todolist = [];
+$scope.addf = function() 
+{$scope.add = "true";}
+$scope.addtodo = function(){
+$scope.todolist.push($scope.text);
+$scope.text = "";
+$scope.first = "false";
+$scope.add = "false"
+$scope.delete = function(index){
+$scope.todolist.splice(index,1);
+}
+}
+}
+</script>
+
+</body>
+</html>
